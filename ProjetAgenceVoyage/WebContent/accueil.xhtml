@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE xsl:stylesheet [ <!ENTITY times "&#8855;"> ]>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui" 
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head> <title>Accueil</title>
+
+	<style type="text/css">
+		.value { font-weight: bold; }
+	</style>
+	
+</h:head>
+
+<h:body>
+    <ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">  
+	<ui:define name="content">
+
+		<!-- ******************************** CONTENU DU BODY ******************************* -->
+		<h2 
+			style="text-align: center; font-family: Ink Free; color: black; font-weight: bold; font-size: 35px ; text-shadow:1px 1px 2px FireBrick">
+			Bienvenue sur "ASIA TRAVEL", agence de voyage consacrée à l'Asie !
+		</h2>
+		
+		
+		<p:carousel numVisible="1"  effect="easeInStrong"  headerText="Choisir votre destination" style="font-size:20px; font-family:Ink Free; border:0px solid moccasin; box-shadow: 0px 0px 70px 30px moccasin">
+	      
+	        <p:tab title="Japon">
+	          <div style="background-image:url('image/fond2.PNG'); width:100%; height:110%; background-size:cover; border:solid moccasin">
+	        	<h2 style="text-align:center; font-family:Ink Free; color:black; font-weight:bold; text-decoration:underline; font-size:40px ; text-shadow:4px 4px 6px #888">Japon</h2>
+	            <div class="ui-g" style="font-family:Ink Free; color:black; font-weight:bold; font-size:19px; text-align:justify">
+	            	<div class="ui-g-4">
+	            	<p:imageSwitch effect="fade" id="fadeEffect">
+					    <ui:repeat value="#{imageController.imagesJap}" var="image" id="fadeEffectImages">
+					        <img src="image/japon/#{image}" id="image" style="width:500px; height:500px; border: solid FireBrick; box-shadow:6px 6px 8px #888"/>
+					    </ui:repeat>
+					</p:imageSwitch>
+					</div>
+					<div class="ui-g-1"/>
+					<div class="ui-g-6 ui-g-nopad">
+					<div class="ui-g-12">
+	          			<h:outputText value="Petites descriptions du pays :" style="text-decoration:underline"/>	
+	            	</div>
+	            	<div class="ui-g-12">
+	                	<h:outputText value=" On apprivoise peu à peu cet univers inconnu, où la tradition se conjugue avec la modernité, où la sérénité et le respect côtoient l’animation et l’agitation, où l’ordre et la propreté sont de mise…"/>
+	            	</div>
+	            	<div class="ui-g-12">
+	          			<h:outputText value="Activités :" style="text-decoration:underline"/>	
+	            	</div>
+	            	<div class="ui-g-12">
+	                	<h:outputText value="
+	           							Tokyo, la plus grande ville du monde, un univers urbain électrique, trépidant, étincelant. 
+	           							Kyoto, l’ancienne capitale impériale, ville des arts et des geishas, du thé et de l’ikebana. Osaka, la créative. 
+	           							Pour les accros de nouvelles technologies,le Japon répond à toutes les attentes. Les amoureux de la nature ne seront pas déçus non plus. L’intérieur, naturel, secret, presque sauvage et encore préservé de la modernité, s’offre à eux. Et que dire des sources thermales, les fameux onsen ? 
+	           							C’est une expérience formidable. Se baigner dans l’eau chaude naturelle (et sulfureuse) d’un onsen en plein air, la nuit sous les étoiles, est un grand moment qui en dit beaucoup sur l’art de vivre japonais.
+	           							Voyager au pays du Soleil-Levant, c’est aussi découvrir la cuisine japonaise, délicieuse, raffinée et esthétique.
+	           							De ce voyage au Japon, on revient sans aucun doute enrichi par le contact avec une autre civilisation et une autre façon de vivre, de penser et d’agir. Un pays dont le parfum n'existe pas en Europe."/>
+	            	</div>
+	            	</div>
+	            	<div class="ui-g-1"/>
+	            </div>
+	            <p style="text-align:center; font-family:Ink Free; color:black; font-weight:bold; text-decoration:underline; font-size:25px ; text-shadow:1px 1px 1px #888"><a href="hotelJap.xhtml">Partir maintenant ?</a> </p>
+	         </div>
+	        </p:tab>
+	        
+	        <p:tab title="Corée">
+	          <div style="background-image:url('image/fond2.PNG'); width:100%; height:110%; background-size:cover; border:solid moccasin">
+	        	<h2 style="text-align:center; font-family:Ink Free; color:black; font-weight:bold; text-decoration:underline; font-size:40px ; text-shadow:4px 4px 6px #888">Corée du Sud</h2>
+	            
+	            <div class="ui-g" style="font-family:Ink Free; color:black; font-weight:bold; font-size:19px; text-align:justify">
+	            	<div class="ui-g-4">
+	                <p:imageSwitch effect="fade" id="fadeEffect">
+					    <ui:repeat value="#{imageController.imagesCor}" var="image" id="fadeEffectImages">
+					        <img src="image/coree/#{image}" id="image" style="width:500px; height:500px; border: solid FireBrick; box-shadow:6px 6px 8px #888"/>
+					    </ui:repeat>
+					</p:imageSwitch>
+					</div>
+					<div class="ui-g-1"/>
+					<div class="ui-g-6 ui-g-nopad">
+					<div class="ui-g-12">
+	          			<h:outputText value="Petites descriptions du pays :" style="text-decoration:underline"/>	
+	            	</div>
+	            	<div class="ui-g-12">
+	                	<h:outputText value="La Corée du Sud est un pays aux antipodes de notre culture, et encore peu fréquenté par les voyageurs occidentaux. C'est pourtant un pays idéal pour découvrir l'ultra-modernité de l'Asie, sa vie à mille à l'heure, sa gastronomie typique et tout simplement un pays qui a beaucoup à offrir."/>
+	            	</div>
+	            	<div class="ui-g-12">
+	          			<h:outputText value="Activités :" style="text-decoration:underline"/>	
+	            	</div>
+	            	<div class="ui-g-12">
+	                	<h:outputText value="
+	           							À Séoul, vous tenterez d’échapper aux embouteillages pour trouver refuge dans les palais royaux préservés parmi des écrins de verdure et des étangs romantiques. 
+	                					En outre, la capitale de la Corée du Sud compte une rue commerçante traditionnelle à Insadong et deux marchés intéressants : celui de Dongdaemun (Tongdaemun) et le grand Namdaemun près de l’ancienne porte du Sud. 
+	                					La Corée du Sud égrène aussi plusieurs parcs nationaux, dont celui de monts de Seorak qui permet aux habitants de la trépidante Séoul de se ressourcer le temps d’un week-end. Enfin, des séjours dans des monastères bouddhistes nommés 'temple stay' ont été mis en place par les autorités touristiques : si les conditions de confort sont minimes, l'authenticité est au rendez-vous.
+	                					Le reste du séjour en Corée du Sud peut être consacré à Busan (Pusan), premier port du pays. Cette ville maritime est très vivante et la visite de son marché aux poissons un must. "/>
+	            	</div>
+	            	</div>
+	            	<div class="ui-g-1"/>
+	            </div>
+	            <p style="text-align:center; font-family:Ink Free; color:black; font-weight:bold; text-decoration:underline; font-size:25px ; text-shadow:1px 1px 1px #888"><a href="hotelCor.xhtml">Partir maintenant ?</a> </p>
+	          </div>
+	        </p:tab>
+	        
+	        <p:tab title="Chine">
+	          <div style="background-image:url('image/fond2.PNG'); width:100%; height:110%; background-size:cover; border:solid moccasin">
+	        	<h2 style="text-align:center; font-family:Ink Free; color:black; font-weight:bold; text-decoration:underline; font-size:40px ; text-shadow:4px 4px 6px #888">Chine</h2>
+	            <div class="ui-g" style="font-family:Ink Free; color:black; font-weight:bold; font-size:19px; text-align:justify">
+	            	<div class="ui-g-4">
+	                <p:imageSwitch effect="fade" id="fadeEffect">
+					    <ui:repeat value="#{imageController.imagesChi}" var="image" id="fadeEffectImages">
+					        <img src="image/chine/#{image}" id="image" style="width:500px; height:500px; border: solid FireBrick; box-shadow:6px 6px 8px #888"/>
+					    </ui:repeat>
+					</p:imageSwitch>
+	                </div>
+					<div class="ui-g-1"/>
+					<div class="ui-g-6 ui-g-nopad">
+					<div class="ui-g-12">
+	          			<h:outputText value="Petites descriptions du pays :" style="text-decoration:underline"/>	
+	            	</div>
+	            	<div class="ui-g-12">
+	                	<h:outputText value="Si la Chine semble de moins en moins lointaine, son pouvoir d’attraction et son mystère demeurent.
+	                						La Chine est un pays immense, par sa superficie, mais également par son histoire. Si vous voulez profiter un maximum de votre voyage en Chine, il vous faudra bien le préparer afin de vous concentrer sur ce que vous aimez."/>
+	            	</div>
+	            	<div class="ui-g-12">
+	          			<h:outputText value="Activités :" style="text-decoration:underline"/>	
+	            	</div>
+	            	<div class="ui-g-12">
+	                	<h:outputText value="Le voyage en Chine débute souvent par un séjour à Pékin, Shanghai ou Hong Kong. Il faut marcher de longues heures dans les avenues envahies par les voitures et les vélos pour mesurer la vitesse des changements aujourd’hui à l’œuvre dans ce pays.
+	                					Il y a des trésors historiques et artistiques incontournables, à voir coûte que coûte, malgré les distances énormes. Au nord et à Pékin, la Grande Muraille, la Cité interdite, le palais d’Été, les musées et les temples. Au centre du pays, l’Armée enterrée de Xi’an. 
+	                					Chargée d'histoire, la Chine est également un symbole de modernité. Non loin de la mer, Shanghai, ville symbole du nouveau capitalisme chinois, en est l'un des exemples les plus parlants avec la Perle de l'Orient."/>
+	           							
+	            	</div>
+	            	</div>
+	            	<div class="ui-g-1"/>
+	            </div>
+	            <p style="text-align:center; font-family:Ink Free; color:black; font-weight:bold; text-decoration:underline; font-size:25px ; text-shadow:1px 1px 1px #888"><a href="hotelChi.xhtml">Partir maintenant ?</a> </p>
+	          </div>
+	        </p:tab>
+	        
+	        <p:tab title="Thaïlande">
+	          <div style="background-image:url('image/fond2.PNG'); width:100%; height:110%; background-size:cover; border:solid moccasin"> 
+	        	<h2 style="text-align:center; font-family:Ink Free; color:black; font-weight:bold; text-decoration:underline; font-size:40px ; text-shadow:4px 4px 6px #888">Thaïlande</h2>
+	            <div class="ui-g" style="font-family:Ink Free; color:black; font-weight:bold; font-size:19px; text-align:justify">
+	            	<div class="ui-g-4">
+	                <p:imageSwitch effect="fade" id="fadeEffect">
+					    <ui:repeat value="#{imageController.imagesTha}" var="image" id="fadeEffectImages">
+					        <img src="image/thailande/#{image}" id="image" style="width:500px; height:500px; border: solid FireBrick; box-shadow:6px 6px 8px #888"/>
+					    </ui:repeat>
+					</p:imageSwitch>
+	                </div>
+					<div class="ui-g-1"/>
+					<div class="ui-g-6 ui-g-nopad">
+					<div class="ui-g-12">
+	          			<h:outputText value="Petites descriptions du pays :" style="text-decoration:underline"/>	
+	            	</div>
+	            	<div class="ui-g-12">
+	                	<h:outputText value="La Thaïlande est un pays aux multiples facettes. Très touristique, elle attire aussi bien pour ses richesses culturelles que ses paysages magnifiques et ses plages de sable blanc. "/>
+	            	</div>
+	            	<div class="ui-g-12">
+	          			<h:outputText value="Activités :" style="text-decoration:underline"/>	
+	            	</div>
+	            	<div class="ui-g-12">
+	                	<h:outputText value="Il y a plusieurs Thaïlande. Tout d’abord, Bangkok, mégapole hyperactive et monstre urbain où l’on se perd avec plaisir. Puis le Sud, ses îles, ses plages et ses rocs jaillis de la mer, sa cuisine plus épicée, sa mentalité un peu différente et ses influences musulmanes. Enfin, le Nord, Thaïlande profonde, originelle avec ses anciens royaumes fondateurs, son rythme de vie détendu, ses temples bouddhiques, sa terre fertile, ses montagnes et ses forêts... Trois Thaïlande donc, physiquement et culturellement différentes.
+	                					Muang Thai (étymologiquement, « le pays des hommes libres ») reste l’un des derniers pays au monde à réunir tant d’ingrédients de qualité pour réussir la recette des vacances idéales : bungalows en bois sur plages somnolentes, vastes rizières et collines couvertes de jungle, traditions vivaces, tribus ancestrales, cuisine raffinée et variée à des prix (encore) souvent dérisoires."/>
+	           							
+	            	</div>
+	            	</div>
+	            	<div class="ui-g-1"/>
+	            </div>
+	            <p style="text-align:center; font-family:Ink Free; color:black; font-weight:bold; text-decoration:underline; font-size:25px ; text-shadow:1px 1px 1px #888"><a href="hotelThai.xhtml">Partir maintenant ?</a> </p>
+	          </div>
+	        </p:tab>
+
+	    </p:carousel>
+	    
+	<!-- ************************ FIN DU CONTENU DU BODY ************************************ --> 
+	
+	</ui:define> <!-- ************************ FIN DU CONTENT ************************************ -->
+   </ui:composition>
+    
+</h:body>
+
+</html>
