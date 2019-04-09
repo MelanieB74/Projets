@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE xsl:stylesheet [ <!ENTITY times "&#8855;"> ]>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui" 
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head> <title>Réservation</title>
+	
+	<style type="text/css">
+	    .label {
+	        width:20%;
+	        padding:4px;
+	    }
+	 
+	    .value {
+	        width:80%;
+	        padding:4px;
+	    }
+	 
+	    .grid {
+	        width:60%;
+	    }
+	 
+	    .error {
+	        color: red;
+	    }
+	 
+	    .outputLabel {
+	        font-weight: bold;
+	    }
+	 
+	    .grid {
+	        width:33%;
+	        padding:4px;
+	    }   
+	    
+	</style>
+		
+</h:head>
+
+<h:body>
+    <ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="content">
+		
+		<!-- ********************* STYLE FOND DU BODY **************************************** -->
+		<div style="background-image:url('image/fond2.PNG'); width: 100%; height: 75%; background-size: cover; border:1px solid moccasin; box-shadow: 0px 20px 20px 20px moccasin">
+		
+		
+		<!-- ******************************** CONTENU DU BODY ******************************* -->
+		<h2 class="first" 
+			style="text-align: center; font-family: Ink Free; font-weight: bold; text-decoration: underline; font-size: 25px ; text-shadow:4px 4px 6px #888">
+			Dernière étape avant le voyage : la Réservation
+		</h2>
+		
+		<h:form>
+		       
+		    <p:growl id="growl" sticky="true" showDetail="true"/>
+		 
+		    <p:wizard flowListener="#{reservationController.onFlowProcess}">
+		    
+		        <p:tab id="personal" title="Informations personnelles" titleStyle="margin-left:20px; background: FireBrick; color: gold; filter:alpha(opacity=80); opacity:0.80; font-family: Ink Free">
+		            <p:panel header="Remplir les champs suivants (* obligatoire)" style="margin-left:16px; width: 98%; background: transparent; border: 0; font-family: Ink Free; text-align: center ">
+		            <div style="background-color: transparent; height: 35%; border: 2px solid FireBrick; box-shadow:4px 4px 6px #888">
+		                <p:messages style="font-family: Ink Free"/>
+		                <h:panelGrid columns="2" columnClasses="label, value" style="margin-left:38%">
+		                    <h:outputText value="Nom: *" />
+		                    <p:inputText value="#{reservationController.client.nomC}" required="true" label="Nom"/>
+		 
+		                    <h:outputText value="Prénom: *" />
+		                    <p:inputText value="#{reservationController.client.prenomC}" required="true" label="Prénom"/>
+		 
+		                    <h:outputText value="Adresse: " />
+		                    <p:inputText value="#{reservationController.client.adresseC}" />
+		                    
+		                    <h:outputText value="Code Postale et ville: " />
+		                    <p:inputText value="#{reservationController.client.codePostaleC}" />
+		 
+		                    <h:outputText value="Email: *" />
+		                    <p:inputText value="#{reservationController.client.mailC}" required="true" label="Email">
+		                    	<f:validator validatorId="MyValidatorBean" />
+		                    </p:inputText>
+		                    
+		                    <h:outputText value="Tel: " />
+		                    <p:inputText value="#{reservationController.client.telC}" />
+		                    		                		                    		                    
+		                </h:panelGrid>
+		                </div>
+		            </p:panel>
+		       
+		        </p:tab>
+		 
+		        <p:tab id="reserv" title="Informations réservation" titleStyle="background: FireBrick; color: gold; filter:alpha(opacity=85); opacity:0.85; font-family: Ink Free">
+		            <p:panel header="Remplir les champs suivants" style="margin-left:16px; width: 98%; background: transparent; border: 0; font-family: Ink Free; text-align: center ">
+		            <div style="background-color: transparent; height: 30%; border: 2px solid FireBrick; box-shadow:4px 4px 6px #888">
+		                <p:messages style="font-family: Ink Free"/>
+		                <h:panelGrid columns="2" columnClasses="label, value" style="margin-left:36%">
+		                    <h:outputText value="Nombre de nuits: " />
+		                    <p:inputText value="#{reservationController.reservation.nbNuit}" required="true" label="Nombre de nuits"/>
+		 
+		                    <h:outputText value="Nombre de personnes: " />
+		                    <p:inputText value="#{reservationController.reservation.nbPers}" required="true" label="Nombre de personnes"/>
+		 
+		                    <h:outputText value="Date d'arrivée: " />
+		                    <p:inputText value="#{reservationController.reservation.dateDeb}" required="true" label="Date d'arrivée"/>
+		 
+		                    <h:outputText value="Date de départ: " />
+		                    <p:inputText value="#{reservationController.reservation.dateFin}" required="true" label="Date de départ"/>
+		                </h:panelGrid>
+		            </div>
+		            </p:panel>
+		        </p:tab>
+		        
+
+		        <p:tab id="confirm" title="Confirmation" titleStyle="background: FireBrick; color: gold; filter:alpha(opacity=85); opacity:0.85; font-family: Ink Free">
+		          <p:panel header="Confirmation de la réservation" style="margin-left:16px; width: 98%; background: transparent;  border: 0; font-family: Ink Free; text-align: center  ">
+		            <div style="background-color: transparent; height: 34%; border: 2px solid FireBrick; box-shadow:4px 4px 6px #888; text-align: center">
+		                <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid" style="margin-left:36%; text-align: center">
+		                    <h:panelGrid columns="2" columnClasses="label, value" cellpadding="2">
+		                        <h:outputText value="Nom: " />
+		                        <h:outputText value="#{reservationController.client.nomC}" styleClass="outputLabel" style="font-weight:bold"/>
+		 
+		  		                <h:outputText value="Adresse: " />
+		                        <h:outputText value="#{reservationController.client.adresseC}" styleClass="outputLabel" style="font-weight:bold"/>
+		                    	
+		                    	<h:outputText value="Email: " />
+		                        <h:outputText value="#{reservationController.client.mailC}" styleClass="outputLabel" style="font-weight:bold"/>
+		                        
+		                        <h:outputText value="Nombre de nuits: " />
+		                        <h:outputText value="#{reservationController.reservation.nbNuit}" styleClass="outputLabel" style="font-weight:bold"/>
+		                        
+		                        <h:outputText value="Arrivée le: " />
+		                        <h:outputText value="#{reservationController.reservation.dateDeb}" styleClass="outputLabel" style="font-weight:bold"/>
+		                                   
+		                    </h:panelGrid>
+		                    
+		                    <h:panelGrid/>
+		                    
+			                    <h:panelGrid columns="2" columnClasses="label, value" cellpadding="2">
+			                        <h:outputText value="Prénom: " />
+			                        <h:outputText value="#{reservationController.client.prenomC}" styleClass="outputLabel" style="font-weight:bold"/>
+			                        
+			                        <h:outputText value="Code Postale et ville: " />
+			                        <h:outputText value="#{reservationController.client.adresseC}" styleClass="outputLabel" style="font-weight:bold"/>
+			                        
+			                        <h:outputText value="Tel: " />
+			                        <h:outputText value="#{reservationController.client.telC}" styleClass="outputLabel" style="font-weight:bold"/>  
+			 		                      
+			                        <h:outputText value="Nombre de personnes: " />
+			                        <h:outputText value="#{reservationController.reservation.nbPers}" styleClass="outputLabel" style="font-weight:bold"/>
+			                    			                    		                        
+			                        <h:outputText value="Départ le: " />
+			                        <h:outputText value="#{reservationController.reservation.dateFin}" styleClass="outputLabel" style="font-weight:bold"/>            
+			                   		
+			                   		<h:outputText/>
+			                   		<h:outputText/>
+			                   				                   
+			                    </h:panelGrid>
+ 
+		             	</h:panelGrid>
+	                	
+	                 	<p:commandButton value="Enregistrer" action="#{reservationController.save}" update="growl" process="@this" 
+	                 					 style="font-family: Ink Free; background: FireBrick; color: gold; opacity:0.85"/>
+		            
+		           </div>
+		         </p:panel>
+		       </p:tab>
+		
+		    </p:wizard>
+		  
+		</h:form>
+	
+	</div> <!-- ************************ FIN DU CONTENU DU BODY ************************************ -->
+	
+	</ui:define> <!-- ************************ FIN DU CONTENT ************************************ -->
+    </ui:composition>
+    
+</h:body>
+
+</html>

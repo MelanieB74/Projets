@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE xsl:stylesheet [ <!ENTITY times "&#8855;"> ]>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui" 
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head> <title>Header</title>
+
+</h:head>
+
+<h:body>
+    <ui:composition>
+	
+		<!-- ******************************** HEADER ***************************************** -->
+		<!-- STYLE DU FOND -->
+		<div style="background-image:url('image/fond1.jpg'); 
+			background-size: cover; width: 100%; border:1px solid moccasin; box-shadow: 0px 20px 20px 20px moccasin;
+			font-size: 36px; line-height: 48px; font-family: Ink Free">
+				<!-- AFICHAGE DU LOGO DE L AGENCE ET DES LIENS QUI ET CONTACT -->
+	        	<div class="ui-g">
+		   			<div class="ui-g-2"> <img src="icone/logo.PNG" style="width: 200px; height: 110px; border: 2px solid black; border-radius:10px; box-shadow:0px 0px 5px 5px beige"/> </div>
+		    		<div class="ui-g-6"/>
+		   			<div class="ui-g-4">
+		   				<a href="presentation.xhtml" style="color: beige; text-shadow: 4px 4px 6px #888">Qui sommes-nous?</a><br/>
+		   				<a href="contact.xhtml" style="color: beige; text-shadow: 4px 4px 6px #888">Nous Contacter</a>	   			
+		   			</div>
+				</div>
+		</div>
+		
+		<!-- ******************************** MENU ***************************************** -->
+		<p:stack icon="/icone/menuBoite.png" expanded="true">
+			<p:menuitem value="Présentation" icon="/icone/menuPre.PNG" url="presentation.xhtml"/>
+			<p:menuitem value="Contact" icon="/icone/menuLettre.png" url="contact.xhtml" />
+			<p:menuitem value="Accueil" icon="/icone/menuHome.png" url="accueil.xhtml" />    
+		</p:stack>
+	
+
+		
+    </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE xsl:stylesheet [ <!ENTITY times "&#8855;"> ]>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui" 
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head> <title>Hotels Corée</title>
+	
+	<!--  inutil -->
+	<style type="text/css">
+	    .logo {width: 5%;}
+	    .detail {width: 95%;padding-left: 25px;}
+	    .detail td {font-size: 24px;}
+	    .h3 {
+	    	
+	    }
+	</style>
+	
+</h:head>
+
+<h:body>
+    <ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<ui:define name="content">
+	
+	<!-- ********************* STYLE FOND DU BODY **************************************** -->
+	<div style="background-image:url('image/fond2.PNG'); width: 100%; height: 85%; background-size: cover; border:1px solid moccasin; box-shadow: 0px 40px 80px 40px moccasin">
+	
+		<!-- ******************************** CONTENU DU BODY ******************************* -->
+		<h2 style="text-align:center; font-family:Ink Free; color:black; font-weight:bold; text-decoration:underline; font-size:35px ; text-shadow:4px 4px 6px #888">
+			Vous avez choisi la Corée du Sud !
+		</h2>
+		
+		<!--  CHOIX DES HOTELS SELON LA VILLE CHOISIE : ACCORDEON -->
+		<h:form id="form1">
+		   <p:growl id="msgs" showDetail="true" />	
+		   <h3 style="font-family: Ink Free; font-weight: bold; font-size: 24px">Vous pouvez consulter les hotels parmis les différentes villes proposées.</h3>
+		   
+		   <p:accordionPanel >
+		       
+		       <p:tab title="SEOUL" titleStyle="background: FireBrick; color: gold; filter:alpha(opacity=85); opacity:0.85; font-family: Ink Free" >
+		       <!-- Theme de fond -->
+		       	<div style="background-image:url('image/fond2.PNG'); background-size: cover; border:1px solid moccasin; box-shadow: 0px 0px 50px 50px moccasin">	       	
+		       		<!-- Liste des hôtels du pays concerné -->
+		       		<p:repeat value="#{hotelController.hotelListSeoul}" var="h">
+		       			<!-- Sous forme d'une grille à 3 colonnes -->
+		        		<h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail" >
+		            		<p:commandLink update=":form:hotelDetail" oncomplete="PF('hotelDialog').show()">
+		                		<f:setPropertyActionListener value="#{h}" target="#{hotelController.selectedHotel}" />
+			                		<p:imageSwitch effect="fade" id="fadeEffect">
+									    <ui:repeat value="#{imageController.imagesHotCor}" var="image" id="fadeEffectImages">
+									        <img src="imageHotel/coree/seoul#{h.idH}/#{image}" id="image" style="width:450px; height: 320px; border: solid FireBrick; box-shadow:6px 6px 8px #888"/>
+									    </ui:repeat>
+									</p:imageSwitch> 
+		            		</p:commandLink>
+					            <p:outputPanel>
+					                <h:panelGrid columns="1" cellpadding="5" >
+					                    <h:outputText value="#{h.nomH}" style="font-family: Ink Free; font-weight: bold; font-size:20px"/>
+					                    <h:outputText value="#{h.adresseH}" style="font-family: Ink Free; font-weight: bold"/>
+					                    <h:outputText value="Prix: #{h.prixH} EUR /nuit" style="font-family: Ink Free; font-weight: bold"/>
+					                </h:panelGrid>
+					            </p:outputPanel>
+						          	<p style="font-family: Ink Free; font-weight: bold; color: FireBrick; font-size:20px; text-align: center"> Etes-vous partant pour la réservation ?
+				        				<br/> <a href="reservation.xhtml"> <img src="icone/avion.png" style="width:32px"/> </a> 
+				        			</p>	        			
+		        		</h:panelGrid>  		
+						<hr />
+		   	 		</p:repeat>
+		   	 	</div>
+		       </p:tab>
+		       
+		       <p:tab title="BUSAN" titleStyle="background: FireBrick; filter:alpha(opacity=85); opacity:0.85; color: gold; font-family: Ink Free">
+		        <!-- Theme de fond -->
+		       	<div style="background-image:url('image/fond2.PNG'); background-size: cover; border:1px solid moccasin; box-shadow: 0px 0px 50px 50px moccasin">	       	
+		       		<!-- Liste des hôtels du pays concerné -->
+		       		<p:repeat value="#{hotelController.hotelListBusan}" var="h">
+		       			<!-- Sous forme d'une grille à 3 colonnes -->
+		        		<h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail" >
+		            		<p:commandLink update=":form:hotelDetail" oncomplete="PF('hotelDialog').show()">
+		                		<f:setPropertyActionListener value="#{h}" target="#{hotelController.selectedHotel}" />
+			                		<p:imageSwitch effect="fade" id="fadeEffect">
+									    <ui:repeat value="#{imageController.imagesHotCor}" var="image" id="fadeEffectImages">
+									        <img src="imageHotel/coree/busan#{h.idH}/#{image}" id="image" style="width:450px; height: 320px; border: solid FireBrick; box-shadow:6px 6px 8px #888"/>
+									    </ui:repeat>
+									</p:imageSwitch> 	 
+		            		</p:commandLink>
+					            <p:outputPanel>
+					                <h:panelGrid columns="1" cellpadding="5" >
+					                    <h:outputText value="#{h.nomH}" style="font-family: Ink Free; font-weight: bold; font-size:20px"/>
+					                    <h:outputText value="#{h.adresseH}" style="font-family: Ink Free; font-weight: bold"/>
+					                    <h:outputText value="Prix: #{h.prixH} EUR /nuit" style="font-family: Ink Free; font-weight: bold"/>
+					                </h:panelGrid>
+					            </p:outputPanel>
+						          	<p style="font-family: Ink Free; font-weight: bold; color: FireBrick; font-size:20px; text-align: center"> Etes-vous partant pour la réservation ?
+				        				<br/> <a href="reservation.xhtml"> <img src="icone/avion.png" style="width:32px"/> </a> 
+				        			</p>	        			
+		        		</h:panelGrid>  		
+						<hr />
+		   	 		</p:repeat>
+		   	 	</div>
+		       </p:tab>
+		       
+		       <p:tab title="JEJU-DO" titleStyle="background: FireBrick; filter:alpha(opacity=85); opacity:0.85; color: gold; font-family: Ink Free">
+		      	<!-- Theme de fond -->
+		       	<div style="background-image:url('image/fond2.PNG'); background-size: cover; border:1px solid moccasin; box-shadow: 0px 0px 50px 50px moccasin">	       	
+		       		<!-- Liste des hôtels du pays concerné -->
+		       		<p:repeat value="#{hotelController.hotelListJeju}" var="h">
+		       			<!-- Sous forme d'une grille à 3 colonnes -->
+		        		<h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail" >
+		            		<p:commandLink update=":form:hotelDetail" oncomplete="PF('hotelDialog').show()">
+		                		<f:setPropertyActionListener value="#{h}" target="#{hotelController.selectedHotel}" />
+			                		<p:imageSwitch effect="fade" id="fadeEffect">
+									    <ui:repeat value="#{imageController.imagesHotCor}" var="image" id="fadeEffectImages">
+									        <img src="imageHotel/coree/jeju#{h.idH}/#{image}" id="image" style="width:450px; height: 320px; border: solid FireBrick; box-shadow:6px 6px 8px #888"/>
+									    </ui:repeat>
+									</p:imageSwitch>  
+		            		</p:commandLink>
+					            <p:outputPanel>
+					                <h:panelGrid columns="1" cellpadding="5" >
+					                    <h:outputText value="#{h.nomH}" style="font-family: Ink Free; font-weight: bold; font-size:20px"/>
+					                    <h:outputText value="#{h.adresseH}" style="font-family: Ink Free; font-weight: bold"/>
+					                    <h:outputText value="Prix: #{h.prixH} EUR /nuit" style="font-family: Ink Free; font-weight: bold"/>
+					                </h:panelGrid>
+					            </p:outputPanel>
+						          	<p style="font-family: Ink Free; font-weight: bold; color: FireBrick; font-size:20px; text-align: center"> Etes-vous partant pour la réservation ?
+				        				<br/> <a href="reservation.xhtml"> <img src="icone/avion.png" style="width:32px"/> </a> 
+				        			</p>	        			
+		        		</h:panelGrid>  		
+						<hr />
+		   	 		</p:repeat>
+		   	 	</div>
+		       </p:tab>
+		       
+		   </p:accordionPanel> <!--  FIN DU CHOIX PAR ACCORDEON -->
+		
+		</h:form>
+		
+		<!-- ***************** INFORMATIONS CONCERNANT L'HOTEL SELECTIONNE : POPUP ****************** -->
+		<h:form id="form">
+    
+		     <p:dialog header="Infos Hotel" widgetVar="hotelDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false"  
+		     		style="font-family: Ink Free; background: moccasin">
+		        <p:outputPanel id="hotelDetail">
+		            <p:panelGrid  columns="2" columnClasses="label,value" style="font-family: Ink Free; font-weight: bold">
+		                <f:facet name="header">
+		              		<img src="imageHotel/popup/coree/hotelC#{h.idH}.JPG" style="width:250px"/>
+		                </f:facet>
+		 
+		                <h:outputText value="Nom:" />
+		                <h:outputText value="#{hotelController.selectedHotel.nomH}" />
+		 
+		                <h:outputText value="Adresse:" style="font-family: Ink Free; font-weight: bold"/>
+		                <h:outputText value="#{hotelController.selectedHotel.adresseH}"/>
+		 
+		               	<h:outputText value="Tel:" style="font-family: Ink Free; font-weight: bold"/>
+		                <h:outputText value="#{hotelController.selectedHotel.telH}"/>
+		 
+		               	<h:outputText value="Mail:" style="font-family: Ink Free; font-weight: bold"/>
+		                <h:outputText value="#{hotelController.selectedHotel.mailH}" />
+		                
+		                <h:outputText value="Prix:" style="font-family: Ink Free; font-weight: bold" />
+		                <h:outputText value="#{hotelController.selectedHotel.prixH} EUR /nuit"/>
+		                
+		                <h:outputText value="Note:" style="font-family: Ink Free; font-weight: bold"/>
+        				<p:rating value="#{hotelController.selectedHotel.note}" readonly="true" />
+        				
+        				<h:outputText value="Description:" style="font-family: Ink Free; font-weight: bold" />
+		                <h:outputText value="#{hotelController.selectedHotel.descriptionH}"/>
+		                
+		            </p:panelGrid>
+		        </p:outputPanel>
+		    </p:dialog>
+		    
+		</h:form>
+
+	</div> <!-- ************************ FIN DU CONTENU DU BODY ************************************ -->
+	
+	</ui:define> <!-- ************************ FIN DU CONTENT ************************************ -->
+    </ui:composition>
+    
+</h:body>
+
+</html>
